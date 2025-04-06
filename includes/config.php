@@ -1,0 +1,1 @@
+define('SITE_NAME', 'The Royal Lotus'); define('SITE_NAME', 'The Royal Lotus'); 

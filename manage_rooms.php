@@ -29,8 +29,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
         $size = $_POST['size'] ?? '';
         $max_occupancy = $_POST['max_occupancy'] ?? 2;
         $image_url = $_POST['image_url'] ?? '';
-        $image_url_2 = $_POST['image_url_2'] ?? '';
-        $image_url_3 = $_POST['image_url_3'] ?? '';
         
         // Handle image uploads
         $upload_dir = 'images/rooms/';
@@ -52,40 +50,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
             }
         }
         
-        // Process second image upload
-        if (isset($_FILES['image_upload_2']) && $_FILES['image_upload_2']['error'] == 0) {
-            $file_tmp = $_FILES['image_upload_2']['tmp_name'];
-            $file_name = basename($_FILES['image_upload_2']['name']);
-            $file_ext = strtolower(pathinfo($file_name, PATHINFO_EXTENSION));
-            
-            // Generate unique filename
-            $new_file_name = uniqid('room_') . '.' . $file_ext;
-            $destination = $upload_dir . $new_file_name;
-            
-            // Check if file is an image
-            $allowed_types = ['jpg', 'jpeg', 'png', 'gif'];
-            if (in_array($file_ext, $allowed_types) && move_uploaded_file($file_tmp, $destination)) {
-                $image_url_2 = $destination;
-            }
-        }
-        
-        // Process third image upload
-        if (isset($_FILES['image_upload_3']) && $_FILES['image_upload_3']['error'] == 0) {
-            $file_tmp = $_FILES['image_upload_3']['tmp_name'];
-            $file_name = basename($_FILES['image_upload_3']['name']);
-            $file_ext = strtolower(pathinfo($file_name, PATHINFO_EXTENSION));
-            
-            // Generate unique filename
-            $new_file_name = uniqid('room_') . '.' . $file_ext;
-            $destination = $upload_dir . $new_file_name;
-            
-            // Check if file is an image
-            $allowed_types = ['jpg', 'jpeg', 'png', 'gif'];
-            if (in_array($file_ext, $allowed_types) && move_uploaded_file($file_tmp, $destination)) {
-                $image_url_3 = $destination;
-            }
-        }
-        
         // Process amenities
         $amenities = [];
         if (isset($_POST['amenities']) && is_array($_POST['amenities'])) {
@@ -104,8 +68,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
                     'max_occupancy' => $max_occupancy,
                     'amenities' => json_encode($amenities),
                     'image_url' => $image_url,
-                    'image_url_2' => $image_url_2,
-                    'image_url_3' => $image_url_3,
                     'updated_at' => date('Y-m-d H:i:s')
                 ]);
                 
@@ -330,7 +292,7 @@ $common_amenities = ['WiFi', 'TV', 'Air Conditioning', 'Mini Bar', 'Ocean View',
                         </div>
 
                         <div class="p-4 bg-gray-50 rounded-lg border border-gray-200">
-                            <label class="block text-base font-bold text-gray-700 mb-3">Room Images for Carousel</label>
+                            <label class="block text-base font-bold text-gray-700 mb-3">Room Image</label>
                             
                             <div class="flex flex-nowrap overflow-x-auto pb-2 space-x-4 carousel-inputs">
                                 <!-- Image 1 -->
@@ -348,42 +310,6 @@ $common_amenities = ['WiFi', 'TV', 'Air Conditioning', 'Mini Bar', 'Ocean View',
                                             <span class="text-gray-500 text-sm">OR</span>
                                         </div>
                                         <input type="url" name="image_url" id="image_url" class="w-full border-2 border-gray-300 rounded-md py-2 px-3 bg-white shadow-sm text-sm" placeholder="Image URL">
-                                    </div>
-                                </div>
-                                
-                                <!-- Image 2 -->
-                                <div class="min-w-[250px] flex-1">
-                                    <div class="bg-white p-3 rounded-lg border border-gray-200 h-full">
-                                        <label class="block text-sm font-medium text-gray-700 mb-2">Second Image</label>
-                                        <div class="relative border-2 border-gray-300 border-dashed rounded-md mb-2">
-                                            <input type="file" name="image_upload_2" id="image_upload_2" class="w-full h-full absolute inset-0 opacity-0 cursor-pointer" accept="image/*">
-                                            <div class="text-center p-4">
-                                                <i class="fas fa-cloud-upload-alt text-gray-400 text-2xl mb-1"></i>
-                                                <p class="text-xs text-gray-500">Upload Image</p>
-                                            </div>
-                                        </div>
-                                        <div class="text-center mb-2">
-                                            <span class="text-gray-500 text-sm">OR</span>
-                                        </div>
-                                        <input type="url" name="image_url_2" id="image_url_2" class="w-full border-2 border-gray-300 rounded-md py-2 px-3 bg-white shadow-sm text-sm" placeholder="Image URL">
-                                    </div>
-                                </div>
-                                
-                                <!-- Image 3 -->
-                                <div class="min-w-[250px] flex-1">
-                                    <div class="bg-white p-3 rounded-lg border border-gray-200 h-full">
-                                        <label class="block text-sm font-medium text-gray-700 mb-2">Third Image</label>
-                                        <div class="relative border-2 border-gray-300 border-dashed rounded-md mb-2">
-                                            <input type="file" name="image_upload_3" id="image_upload_3" class="w-full h-full absolute inset-0 opacity-0 cursor-pointer" accept="image/*">
-                                            <div class="text-center p-4">
-                                                <i class="fas fa-cloud-upload-alt text-gray-400 text-2xl mb-1"></i>
-                                                <p class="text-xs text-gray-500">Upload Image</p>
-                                            </div>
-                                        </div>
-                                        <div class="text-center mb-2">
-                                            <span class="text-gray-500 text-sm">OR</span>
-                                        </div>
-                                        <input type="url" name="image_url_3" id="image_url_3" class="w-full border-2 border-gray-300 rounded-md py-2 px-3 bg-white shadow-sm text-sm" placeholder="Image URL">
                                     </div>
                                 </div>
                             </div>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Royal Lotus Project Details</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="project1.css"> 
+    <link rel="apple-touch-icon" sizes="180x180" href="./images/user/A_icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/user/A_icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./images/user/A_icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="main_header">
+        <a href="./index.html" class="site_link">Ajeet Yadav</a>
+    </header>
+
+    <main>
+        <section class="project-details">
+            <h1 class="project-title">The Royal Lotus – Hotel Management System</h1>
+
+            <div class="details-section">
+                <h2 class="section-heading">Overview</h2>
+                <p>
+                    An end-to-end hotel management system that serves guests and administrators. 
+                    This comprehensive web application allows guests to browse rooms, book stays, 
+                    and submit inquiries, while providing a powerful administrative dashboard for 
+                    managing all aspects of the hotel's operations, including bookings, room inventory, 
+                    and guest messages.
+                </p>
+                <div class="section-image-container">
+                    <img src="./images/project1/landing_page.png" alt="Landing page screenshot">
+                    <p class="image-caption">The inviting landing page of The Royal Lotus.</p>
+                </div>
+            </div>
+
+            <div class="details-section">
+                <h2 class="section-heading">Technologies Used</h2>
+                <ul class="tech-list">
+                    <li><strong>Backend:</strong> PHP (PDO) for secure and efficient database interactions.</li>
+                    <li><strong>Database:</strong> MySQL/MariaDB for structured data storage.</li>
+                    <li><strong>Frontend:</strong> Tailwind CSS for a utility-first and responsive design.</li>
+                    <li><strong>Icons:</strong> Font Awesome for a modern and clean user interface.</li>
+                </ul>
+            </div>
+
+            <div class="details-section">
+                <h2 class="section-heading">Key Features</h2>
+                <div class="feature-list">
+                    <div class="feature-card">
+                        <h3>For Guests</h3>
+                        <ul>
+                            <li>Browse and book rooms with secure validation.</li>
+                            <li>View personal booking history and manage profile.</li>
+                            <li>Explore the restaurant menu and submit contact messages.</li>
+                        </ul>
+                        <div class="feature-image">
+                            <img src="./images/project1/booking_img.png" alt="Booking page screenshot">
+                            <p class="image-caption">Guest view of the room booking interface.</p>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <h3>For Administrators</h3>
+                        <ul>
+                            <li>Manage all guest bookings (confirm, cancel, view details).</li>
+                            <li>Full CRUD (Create, Read, Update, Delete) functionality for rooms and room types.</li>
+                            <li>Handle and respond to all guest contact messages.</li>
+                        </ul>
+                        <div class="feature-image">
+                            <img src="./images/project1/Admin_dashboard.png" alt="Admin dashboard screenshot">
+                            <p class="image-caption">The comprehensive Admin Dashboard for managing bookings and rooms.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="details-section">
+                <h2 class="section-heading">Authentication</h2>
+                <p>
+                    The system includes a secure authentication module where users can 
+                    register with unique credentials and log in to access booking features. 
+                    Admins log in separately with elevated privileges to manage hotel operations.
+                </p>
+                <ul class="tech-list">
+                    <li>Registration validates unique email and strong password.</li>
+                    <li>Passwords stored securely using <code>password_hash()</code>.</li>
+                    <li>Login establishes a secure session with role-based access (User/Admin).</li>
+                </ul>
+                <div class="section-image-container">
+                    <img src="./images/project1/login.png" alt="Login page screenshot">
+                    <p class="image-caption">Secure login interface for users and administrators.</p>
+                </div>
+                <div class="section-image-container">
+                    <img src="./images/project1/SignUp.png" alt="Register page screenshot">
+                    <p class="image-caption">User registration form.</p>
+                </div>
+            </div>
+
+            <div class="details-section">
+                <h2 class="section-heading">Project Structure</h2>
+                <p>The application follows a modular and organized file structure for clarity and maintainability.</p>
+                <pre class="code-block">
+/Hotel_Management
+├── includes/
+│   ├── nav.php
+│   ├── footer.php
+│   ├── db.php
+│   ├── config.local.php
+│   └── config.php
+├── pages/
+│   ├── index.php
+│   ├── rooms.php
+│   ├── booking.php
+│   └── ...
+└── assets/
+    ├── css/
+    └── images/
+                </pre>
+            </div>
+
+            <div class="details-section">
+                <h2 class="section-heading">Security and Validation</h2>
+                <p>
+                    The project prioritizes security by using prepared statements via PDO to prevent SQL injection, 
+                    <code>password_hash()</code> for secure password storage, and role-based access control to protect 
+                    sensitive admin pages.
+                </p>
+            </div>
+            
+            <div class="details-section">
+                <h2 class="section-heading">Future Improvements</h2>
+                <ul>
+                    <li>Implementing CSRF tokens for enhanced form security.</li>
+                    <li>Integrating a payment gateway for direct online bookings.</li>
+                    <li>Developing a more robust availability calendar.</li>
+                    <li>Migrating to a more streamlined template system to reduce code duplication.</li>
+                </ul>
+            </div>
+
+            <a href="./index.html" class="project-link">View Live Project</a>
+
+        </section>
+    </main>
+
+</body>
+</html>
